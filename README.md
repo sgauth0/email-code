@@ -1,6 +1,7 @@
 # Draggable Terminal with Next.js
 
 A Next.js application featuring a draggable terminal component built with xterm.js and react-dnd.
+Plus a framework for an email client this is all just basic ass framework stuff for other things feel free to use it for whatever MIT type stuuff.
 
 ## Features
 
