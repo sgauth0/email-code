@@ -25,6 +25,7 @@ import ThreadDetailView from '@/components/ThreadDetailView';
 import Sidebar from '@/components/Sidebar';
 import Header from '@/components/Header';
 import HelpModal from '@/components/HelpModal';
+import OnboardAccountModal from '@/components/OnboardAccountModal';
 
 export default function EmailPage() {
   const [accounts, setAccounts] = useState<Account[]>([]);
@@ -41,6 +42,7 @@ export default function EmailPage() {
   const [showMovePicker, setShowMovePicker] = useState(false);
   const [movePickerQuery, setMovePickerQuery] = useState('');
   const [showAccountPicker, setShowAccountPicker] = useState(false);
+  const [showOnboarding, setShowOnboarding] = useState(false);
 
   // Initialize data
   useEffect(() => {
@@ -438,6 +440,14 @@ export default function EmailPage() {
     setRefreshTrigger(prev => prev + 1);
   };
 
+  const handleAddAccount = (newAccount: { email: string; provider: 'gmail' | 'outlook' | 'imap'; name: string }) => {
+    // In a real app, this would save to backend
+    console.log('New account added:', newAccount);
+    setShowOnboarding(false);
+    setShowAccountPicker(false);
+    // Show success message or refresh accounts
+  };
+
   const syncStatuses = getAllSyncStatuses();
 
   return (
@@ -514,6 +524,14 @@ export default function EmailPage() {
               className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full border border-dashed border-white/[0.10] bg-black/[0.12] text-[12px] font-mono text-white/60 hover:border-white/[0.16] hover:text-white/80 transition-all"
             >
               <span>more...</span>
+            </button>
+
+            <button
+              onClick={() => window.location.href = '/settings'}
+              className="px-2.5 py-1.5 rounded-full border border-dashed border-white/[0.10] bg-white/[0.04] text-[12px] font-mono text-white/70 hover:border-white/[0.16] transition-all"
+              title="Settings"
+            >
+              ⚙
             </button>
             
             <button 
@@ -623,6 +641,17 @@ export default function EmailPage() {
               </button>
             </div>
             <div className="max-h-[480px] overflow-y-auto p-2">
+              {/* Add Account Button */}
+              <button
+                onClick={() => setShowOnboarding(true)}
+                className="w-full mb-3 px-4 py-3 bg-cyan-500/[0.15] border border-cyan-500/[0.22] rounded-xl text-[13px] font-mono text-cyan-400 hover:bg-cyan-500/[0.22] transition-all flex items-center justify-center gap-2"
+              >
+                <span className="text-[16px]">+</span>
+                <span>Add New Account</span>
+              </button>
+
+              <div className="h-px bg-white/[0.06] mb-2"></div>
+
               {accounts.map((account) => {
                 const healthColor = account.healthStatus === 'good' ? 'bg-emerald-500' : account.healthStatus === 'reauth' ? 'bg-yellow-500' : 'bg-red-500';
                 return (
@@ -677,6 +706,13 @@ export default function EmailPage() {
             </div>
           </div>
         </div>
+      )}
+
+      {showOnboarding && (
+        <OnboardAccountModal
+          onClose={() => setShowOnboarding(false)}
+          onComplete={handleAddAccount}
+        />
       )}
 
       {showHelp && <HelpModal onClose={() => setShowHelp(false)} />}
