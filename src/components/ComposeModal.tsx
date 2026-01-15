@@ -141,7 +141,7 @@ export default function ComposeModal({
         {/* Header */}
         <div className="px-6 py-4 border-b border-white/[0.08] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
-            <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-cyan-400 to-fuchsia-500 shadow-[0_0_18px_rgba(0,255,255,0.25)]"></div>
+            <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-pink-400 to-fuchsia-500 shadow-[0_0_18px_rgba(255,105,180,0.25)]"></div>
             <div>
               <h2 className="text-[16px] font-mono font-bold text-white/90">
                 {replyTo ? 'reply' : 'compose'}
@@ -153,7 +153,7 @@ export default function ComposeModal({
             <button
               onClick={handleSend}
               disabled={!to || !subject || !body}
-              className="px-4 py-2 bg-cyan-500/[0.20] border border-cyan-500/[0.30] rounded-xl text-[13px] font-mono text-cyan-300 hover:bg-cyan-500/[0.30] transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+              className="px-4 py-2 bg-pink-500/[0.20] border border-pink-500/[0.30] rounded-xl text-[13px] font-mono text-pink-300 hover:bg-pink-500/[0.30] transition-all disabled:opacity-40 disabled:cursor-not-allowed"
             >
               send
             </button>
@@ -167,7 +167,7 @@ export default function ComposeModal({
         </div>
 
         {/* From Account - VERY PROMINENT */}
-        <div className="px-6 py-4 bg-gradient-to-r from-cyan-500/[0.12] to-fuchsia-500/[0.12] border-b border-white/[0.08] flex-shrink-0">
+        <div className="px-6 py-4 bg-gradient-to-r from-pink-500/[0.12] to-fuchsia-500/[0.12] border-b border-white/[0.08] flex-shrink-0">
           <div className="text-[11px] font-mono text-white/60 uppercase tracking-wider mb-2">
             sending from
           </div>
@@ -179,7 +179,7 @@ export default function ComposeModal({
                 const account = accounts.find((a) => a.id === e.target.value);
                 if (account) setFromAccount(account);
               }}
-              className="w-full px-4 py-3 bg-white/[0.08] border-2 border-cyan-500/[0.40] rounded-xl text-[15px] font-mono font-bold text-white/95 appearance-none cursor-pointer hover:bg-white/[0.10] transition-all focus:outline-none focus:ring-2 focus:ring-cyan-500/60"
+              className="w-full px-4 py-3 bg-white/[0.08] border-2 border-pink-500/[0.40] rounded-xl text-[15px] font-mono font-bold text-white/95 appearance-none cursor-pointer hover:bg-white/[0.10] transition-all focus:outline-none focus:ring-2 focus:ring-pink-500/60"
               style={{
                 backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='rgba(255,255,255,0.6)'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
                 backgroundRepeat: 'no-repeat',
@@ -209,7 +209,7 @@ export default function ComposeModal({
               value={to}
               onChange={(e) => setTo(e.target.value)}
               placeholder="recipient@example.com"
-              className="flex-1 px-3 py-2 bg-white/[0.04] border border-white/[0.08] rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500/40 focus:border-transparent text-[13px] font-mono text-white/90 placeholder-white/40"
+              className="flex-1 px-3 py-2 bg-white/[0.04] border border-white/[0.08] rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500/40 focus:border-transparent text-[13px] font-mono text-white/90 placeholder-white/40"
             />
             {!showCc && !showBcc && (
               <div className="flex gap-2">
@@ -240,7 +240,7 @@ export default function ComposeModal({
                 value={cc}
                 onChange={(e) => setCc(e.target.value)}
                 placeholder="carbon copy"
-                className="flex-1 px-3 py-2 bg-white/[0.04] border border-white/[0.08] rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500/40 focus:border-transparent text-[13px] font-mono text-white/90 placeholder-white/40"
+                className="flex-1 px-3 py-2 bg-white/[0.04] border border-white/[0.08] rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500/40 focus:border-transparent text-[13px] font-mono text-white/90 placeholder-white/40"
               />
               <button
                 onClick={() => {
@@ -265,7 +265,7 @@ export default function ComposeModal({
                 value={bcc}
                 onChange={(e) => setBcc(e.target.value)}
                 placeholder="blind carbon copy"
-                className="flex-1 px-3 py-2 bg-white/[0.04] border border-white/[0.08] rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500/40 focus:border-transparent text-[13px] font-mono text-white/90 placeholder-white/40"
+                className="flex-1 px-3 py-2 bg-white/[0.04] border border-white/[0.08] rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500/40 focus:border-transparent text-[13px] font-mono text-white/90 placeholder-white/40"
               />
               <button
                 onClick={() => {
@@ -290,7 +290,7 @@ export default function ComposeModal({
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
               placeholder="Email subject"
-              className="flex-1 px-3 py-2 bg-white/[0.04] border border-white/[0.08] rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500/40 focus:border-transparent text-[13px] font-mono text-white/90 placeholder-white/40"
+              className="flex-1 px-3 py-2 bg-white/[0.04] border border-white/[0.08] rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500/40 focus:border-transparent text-[13px] font-mono text-white/90 placeholder-white/40"
             />
           </div>
 
@@ -304,7 +304,7 @@ export default function ComposeModal({
               value={body}
               onChange={(e) => setBody(e.target.value)}
               placeholder="Write your message..."
-              className="w-full h-[320px] px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500/40 focus:border-transparent text-[13px] font-mono text-white/90 placeholder-white/40 resize-none leading-relaxed"
+              className="w-full h-[320px] px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500/40 focus:border-transparent text-[13px] font-mono text-white/90 placeholder-white/40 resize-none leading-relaxed"
             />
           </div>
 
@@ -327,3 +327,4 @@ export default function ComposeModal({
     </div>
   );
 }
+

@@ -487,7 +487,7 @@ export default function EmailPage() {
       <div className="fixed inset-0 pointer-events-none">
         {backgroundTheme === 'aurora' && (
           <>
-            <div className="absolute top-[20%] left-[12%] w-[1200px] h-[700px] bg-cyan-500/[0.07] rounded-full blur-3xl"></div>
+            <div className="absolute top-[20%] left-[12%] w-[1200px] h-[700px] bg-pink-500/[0.07] rounded-full blur-3xl"></div>
             <div className="absolute top-[10%] right-[12%] w-[1000px] h-[600px] bg-fuchsia-500/[0.06] rounded-full blur-3xl"></div>
             <div className="absolute bottom-[10%] left-[70%] w-[900px] h-[600px] bg-emerald-500/[0.05] rounded-full blur-3xl"></div>
           </>
@@ -503,7 +503,7 @@ export default function EmailPage() {
           <>
             <div className="absolute top-[20%] left-[15%] w-[1200px] h-[700px] bg-blue-500/[0.08] rounded-full blur-3xl"></div>
             <div className="absolute top-[10%] right-[10%] w-[1000px] h-[600px] bg-teal-500/[0.07] rounded-full blur-3xl"></div>
-            <div className="absolute bottom-[10%] left-[65%] w-[900px] h-[600px] bg-cyan-500/[0.06] rounded-full blur-3xl"></div>
+            <div className="absolute bottom-[10%] left-[65%] w-[900px] h-[600px] bg-pink-500/[0.06] rounded-full blur-3xl"></div>
           </>
         )}
         {backgroundTheme === 'forest' && (
@@ -523,7 +523,7 @@ export default function EmailPage() {
         {backgroundTheme === 'neon' && (
           <>
             <div className="absolute top-[20%] left-[12%] w-[1200px] h-[700px] bg-pink-500/[0.09] rounded-full blur-3xl"></div>
-            <div className="absolute top-[10%] right-[12%] w-[1000px] h-[600px] bg-cyan-500/[0.08] rounded-full blur-3xl"></div>
+            <div className="absolute top-[10%] right-[12%] w-[1000px] h-[600px] bg-pink-500/[0.08] rounded-full blur-3xl"></div>
             <div className="absolute bottom-[10%] left-[70%] w-[900px] h-[600px] bg-lime-500/[0.07] rounded-full blur-3xl"></div>
           </>
         )}
@@ -533,7 +533,7 @@ export default function EmailPage() {
         {/* Top Bar with Account Pills */}
         <div className="bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] rounded-[20px] shadow-[0_12px_40px_rgba(0,0,0,0.45)] flex items-center justify-between px-3 py-2.5">
           <div className="flex items-center gap-3 min-w-[260px]">
-            <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-cyan-400 to-fuchsia-500 shadow-[0_0_18px_rgba(0,255,255,0.25)]"></div>
+            <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-pink-400 to-fuchsia-500 shadow-[0_0_18px_rgba(255,105,180,0.25)]"></div>
             <span className="font-mono text-[13px] tracking-wide text-white/80">stella-mail</span>
           </div>
 
@@ -601,7 +601,7 @@ export default function EmailPage() {
                 setComposeReplyTo(null);
                 setShowCompose(true);
               }}
-              className="px-3 py-1.5 rounded-full border border-cyan-500/[0.30] bg-cyan-500/[0.15] text-[12px] font-mono text-cyan-400 hover:bg-cyan-500/[0.22] transition-all"
+              className="px-3 py-1.5 rounded-full border border-pink-500/[0.30] bg-pink-500/[0.15] text-[12px] font-mono text-pink-400 hover:bg-pink-500/[0.22] transition-all"
               title="Compose (c)"
             >
               ✏️ compose
@@ -727,7 +727,7 @@ export default function EmailPage() {
               {/* Add Account Button */}
               <button
                 onClick={() => setShowOnboarding(true)}
-                className="w-full mb-3 px-4 py-3 bg-cyan-500/[0.15] border border-cyan-500/[0.22] rounded-xl text-[13px] font-mono text-cyan-400 hover:bg-cyan-500/[0.22] transition-all flex items-center justify-center gap-2"
+                className="w-full mb-3 px-4 py-3 bg-pink-500/[0.15] border border-pink-500/[0.22] rounded-xl text-[13px] font-mono text-pink-400 hover:bg-pink-500/[0.22] transition-all flex items-center justify-center gap-2"
               >
                 <span className="text-[16px]">+</span>
                 <span>Add New Account</span>
@@ -752,7 +752,7 @@ export default function EmailPage() {
                         onClick={() => toggleAccountPin(account.id)}
                         className={`px-2 py-1 rounded-lg text-[10px] font-mono border transition-all ${
                           account.isPinned
-                            ? 'bg-cyan-500/[0.15] text-cyan-400 border-cyan-500/[0.22]'
+                            ? 'bg-pink-500/[0.15] text-pink-400 border-pink-500/[0.22]'
                             : 'bg-white/[0.04] text-white/50 border-white/[0.08] hover:border-white/[0.12]'
                         }`}
                         title="p: toggle pin"
@@ -841,3 +841,4 @@ export default function EmailPage() {
     </div>
   );
 }
+

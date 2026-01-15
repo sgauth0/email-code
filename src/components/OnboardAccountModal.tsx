@@ -82,7 +82,7 @@ export default function OnboardAccountModal({ onClose, onComplete }: OnboardAcco
                 className="w-full p-4 bg-white/[0.04] border border-white/[0.08] rounded-xl hover:bg-white/[0.06] hover:border-white/[0.12] transition-all text-left group"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-400 to-cyan-400 flex items-center justify-center text-white font-mono font-bold text-[16px]">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-400 to-pink-400 flex items-center justify-center text-white font-mono font-bold text-[16px]">
                     O
                   </div>
                   <div className="flex-1">
@@ -127,7 +127,7 @@ export default function OnboardAccountModal({ onClose, onComplete }: OnboardAcco
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Work, Personal, etc."
-                  className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-[13px] font-mono text-white/90 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all"
+                  className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-[13px] font-mono text-white/90 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-pink-500/40 transition-all"
                 />
               </div>
 
@@ -138,12 +138,12 @@ export default function OnboardAccountModal({ onClose, onComplete }: OnboardAcco
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={provider === 'gmail' ? 'you@gmail.com' : 'you@outlook.com'}
-                  className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-[13px] font-mono text-white/90 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all"
+                  className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-[13px] font-mono text-white/90 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-pink-500/40 transition-all"
                 />
               </div>
 
-              <div className="p-4 bg-cyan-500/[0.10] border border-cyan-500/[0.20] rounded-xl">
-                <div className="text-[11px] font-mono text-cyan-400 leading-relaxed">
+              <div className="p-4 bg-pink-500/[0.10] border border-pink-500/[0.20] rounded-xl">
+                <div className="text-[11px] font-mono text-pink-400 leading-relaxed">
                   <div className="font-bold mb-2">OAuth Authentication</div>
                   You'll be redirected to {provider === 'gmail' ? 'Google' : 'Microsoft'} to securely authorize access. 
                   Stella Mail will never see your password.
@@ -153,7 +153,7 @@ export default function OnboardAccountModal({ onClose, onComplete }: OnboardAcco
               <button
                 onClick={handleConnect}
                 disabled={!email}
-                className="w-full px-4 py-3 bg-cyan-500/[0.15] border border-cyan-500/[0.22] rounded-xl text-[13px] font-mono text-cyan-400 hover:bg-cyan-500/[0.22] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-3 bg-pink-500/[0.15] border border-pink-500/[0.22] rounded-xl text-[13px] font-mono text-pink-400 hover:bg-pink-500/[0.22] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Continue with {provider === 'gmail' ? 'Google' : 'Microsoft'}
               </button>
@@ -176,7 +176,7 @@ export default function OnboardAccountModal({ onClose, onComplete }: OnboardAcco
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="My Email"
-                  className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-[13px] font-mono text-white/90 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all"
+                  className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-[13px] font-mono text-white/90 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-pink-500/40 transition-all"
                 />
               </div>
 
@@ -187,7 +187,7 @@ export default function OnboardAccountModal({ onClose, onComplete }: OnboardAcco
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
-                  className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-[13px] font-mono text-white/90 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all"
+                  className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-[13px] font-mono text-white/90 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-pink-500/40 transition-all"
                 />
               </div>
 
@@ -198,7 +198,7 @@ export default function OnboardAccountModal({ onClose, onComplete }: OnboardAcco
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-[13px] font-mono text-white/90 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all"
+                  className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-[13px] font-mono text-white/90 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-pink-500/40 transition-all"
                 />
               </div>
 
@@ -210,7 +210,7 @@ export default function OnboardAccountModal({ onClose, onComplete }: OnboardAcco
                     value={imapServer}
                     onChange={(e) => setImapServer(e.target.value)}
                     placeholder="imap.example.com"
-                    className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-[13px] font-mono text-white/90 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all"
+                    className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-[13px] font-mono text-white/90 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-pink-500/40 transition-all"
                   />
                 </div>
                 <div>
@@ -220,7 +220,7 @@ export default function OnboardAccountModal({ onClose, onComplete }: OnboardAcco
                     value={imapPort}
                     onChange={(e) => setImapPort(e.target.value)}
                     placeholder="993"
-                    className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-[13px] font-mono text-white/90 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all"
+                    className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-[13px] font-mono text-white/90 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-pink-500/40 transition-all"
                   />
                 </div>
               </div>
@@ -228,7 +228,7 @@ export default function OnboardAccountModal({ onClose, onComplete }: OnboardAcco
               <button
                 onClick={handleConnect}
                 disabled={!email || !password || !imapServer}
-                className="w-full px-4 py-3 bg-cyan-500/[0.15] border border-cyan-500/[0.22] rounded-xl text-[13px] font-mono text-cyan-400 hover:bg-cyan-500/[0.22] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-3 bg-pink-500/[0.15] border border-pink-500/[0.22] rounded-xl text-[13px] font-mono text-pink-400 hover:bg-pink-500/[0.22] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Connect Account
               </button>
@@ -237,7 +237,7 @@ export default function OnboardAccountModal({ onClose, onComplete }: OnboardAcco
 
           {step === 'connecting' && (
             <div className="py-12 text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full border-4 border-cyan-500/[0.20] border-t-cyan-500 animate-spin"></div>
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full border-4 border-pink-500/[0.20] border-t-pink-500 animate-spin"></div>
               <div className="text-[14px] font-mono text-white/80 mb-2">Connecting to {provider}...</div>
               <div className="text-[11px] font-mono text-white/50">This may take a few moments</div>
             </div>
@@ -247,3 +247,4 @@ export default function OnboardAccountModal({ onClose, onComplete }: OnboardAcco
     </div>
   );
 }
+

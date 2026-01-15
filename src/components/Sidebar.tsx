@@ -93,11 +93,11 @@ export default function Sidebar({
               <button
                 key={folder.id}
                 onClick={() => onFolderSelect(displayAccount, folder)}
-                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl border transition-all ${
+                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all ${
                   isSelected
-                    ? 'bg-white/[0.06] border-white/[0.12]'
-                    : 'border-transparent hover:bg-white/[0.04] hover:border-white/[0.08]'
-                } ${isKeyboardFocused ? 'ring-2 ring-cyan-500/50' : ''}`}
+                    ? 'border-2 border-pink-500'
+                    : 'border-2 border-transparent hover:bg-white/[0.04]'
+                } ${isKeyboardFocused ? 'ring-2 ring-pink-500/50' : ''}`}
               >
                 <div className="flex items-center gap-3">
                   <div className="w-6 h-6 rounded-xl bg-white/[0.05] border border-white/[0.07] flex items-center justify-center text-[13px] font-mono text-white/70">
@@ -125,3 +125,4 @@ export default function Sidebar({
     </aside>
   );
 }
+

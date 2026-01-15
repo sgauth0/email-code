@@ -41,7 +41,7 @@ export default function ThreadDetailView({
   const getColorForSender = (name: string) => {
     const colors = [
       'from-purple-400 to-pink-400',
-      'from-blue-400 to-cyan-400',
+      'from-blue-400 to-pink-400',
       'from-green-400 to-emerald-400',
       'from-yellow-400 to-orange-400',
       'from-red-400 to-pink-400',
@@ -59,7 +59,7 @@ export default function ThreadDetailView({
 
   return (
     <main className={`bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] rounded-[20px] shadow-[0_12px_40px_rgba(0,0,0,0.45)] overflow-y-auto transition-all ${
-      isFocused ? 'ring-2 ring-cyan-500/40' : ''
+      isFocused ? 'ring-2 ring-pink-500/40' : ''
     }`}>
       <div className="p-4">
         <div className="bg-black/[0.15] backdrop-blur-sm rounded-xl p-4 border border-white/[0.06]">
@@ -148,7 +148,7 @@ export default function ThreadDetailView({
                       setSelectedSendingAccount(account || null);
                       setShowAccountWarning(true);
                     }}
-                    className="flex-1 px-2.5 py-1.5 border border-white/[0.10] rounded-lg bg-black/[0.18] text-[12px] font-mono text-white/75 focus:outline-none focus:ring-2 focus:ring-cyan-500/40"
+                    className="flex-1 px-2.5 py-1.5 border border-white/[0.10] rounded-lg bg-black/[0.18] text-[12px] font-mono text-white/75 focus:outline-none focus:ring-2 focus:ring-pink-500/40"
                   >
                     {accounts.map((acc) => (
                       <option key={acc.id} value={acc.id}>
@@ -169,7 +169,7 @@ export default function ThreadDetailView({
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => {}}
-                className="px-3 py-2 bg-cyan-500/[0.15] text-cyan-400 rounded-lg text-[12px] font-mono border border-cyan-500/[0.22] hover:bg-cyan-500/[0.22] transition-all"
+                className="px-3 py-2 bg-pink-500/[0.15] text-pink-400 rounded-lg text-[12px] font-mono border border-pink-500/[0.22] hover:bg-pink-500/[0.22] transition-all"
               >
                 reply
               </button>
@@ -210,3 +210,4 @@ export default function ThreadDetailView({
     </main>
   );
 }
+

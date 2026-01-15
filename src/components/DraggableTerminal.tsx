@@ -482,3 +482,4 @@ export default function DraggableTerminal({ position, onPositionChange }: Dragga
     </>
   );
 }
+

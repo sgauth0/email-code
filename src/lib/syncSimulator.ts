@@ -165,3 +165,4 @@ function addNewMessage(accountId: string): void {
   addThread(thread);
   addMessage(message);
 }
+

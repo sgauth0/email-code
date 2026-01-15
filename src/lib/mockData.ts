@@ -12,7 +12,7 @@ import { initializeStore } from './dataLayer';
 
 const colorGradients = [
   'from-purple-400 to-pink-400',
-  'from-blue-400 to-cyan-400',
+  'from-blue-400 to-pink-400',
   'from-green-400 to-emerald-400',
   'from-yellow-400 to-orange-400',
   'from-red-400 to-pink-400',
@@ -294,3 +294,4 @@ export function generateMockData(): void {
   // Initialize the store
   initializeStore({ accounts, folders, threads, messages });
 }
+

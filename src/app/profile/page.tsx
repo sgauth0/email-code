@@ -38,7 +38,7 @@ export default function ProfilePage() {
     <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950">
       {/* Radial gradient overlays */}
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-[20%] left-[12%] w-[1200px] h-[700px] bg-cyan-500/[0.07] rounded-full blur-3xl"></div>
+        <div className="absolute top-[20%] left-[12%] w-[1200px] h-[700px] bg-pink-500/[0.07] rounded-full blur-3xl"></div>
         <div className="absolute top-[10%] right-[12%] w-[1000px] h-[600px] bg-fuchsia-500/[0.06] rounded-full blur-3xl"></div>
         <div className="absolute bottom-[10%] left-[70%] w-[900px] h-[600px] bg-emerald-500/[0.05] rounded-full blur-3xl"></div>
       </div>
@@ -47,7 +47,7 @@ export default function ProfilePage() {
       <header className="relative bg-white/[0.04] backdrop-blur-xl border-b border-white/[0.08] px-6 py-4 shadow-2xl">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
           <Link href="/email" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-            <div className="w-3 h-3 bg-gradient-to-br from-cyan-400 to-fuchsia-500 rounded-full shadow-[0_0_18px_rgba(0,255,255,0.25)]"></div>
+            <div className="w-3 h-3 bg-gradient-to-br from-pink-400 to-fuchsia-500 rounded-full shadow-[0_0_18px_rgba(255,105,180,0.25)]"></div>
             <h1 className="text-sm font-mono tracking-wide text-white/80">
               stella-mail
             </h1>
@@ -101,7 +101,7 @@ export default function ProfilePage() {
                 <div className="flex items-center gap-4">
                   <div className="w-3 h-3 rounded-full shadow-[0_0_16px_rgba(255,255,255,0.10)]" style={{
                     background: account.id === 1 
-                      ? 'linear-gradient(135deg, rgba(0,255,255,0.9), rgba(255,0,200,0.85))'
+                      ? 'linear-gradient(135deg, rgba(255,105,180,0.9), rgba(255,0,200,0.85))'
                       : 'linear-gradient(135deg, rgba(255,180,0,0.9), rgba(255,0,120,0.85))'
                   }}></div>
                   <div className="min-w-0">
@@ -113,7 +113,7 @@ export default function ProfilePage() {
                       {account.unread > 0 && (
                         <>
                           <span className="w-1 h-1 bg-white/30 rounded-full"></span>
-                          <span className="text-cyan-400/80">{account.unread}</span>
+                          <span className="text-pink-400/80">{account.unread}</span>
                         </>
                       )}
                     </div>
@@ -145,7 +145,7 @@ export default function ProfilePage() {
                     <select
                       value={newAccount.provider}
                       onChange={(e) => setNewAccount({ ...newAccount, provider: e.target.value })}
-                      className="w-full px-4 py-2.5 text-sm font-mono border border-white/[0.10] bg-white/[0.03] text-white/88 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent backdrop-blur transition-all"
+                      className="w-full px-4 py-2.5 text-sm font-mono border border-white/[0.10] bg-white/[0.03] text-white/88 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500/50 focus:border-transparent backdrop-blur transition-all"
                     >
                       <option value="gmail">gmail</option>
                       <option value="outlook">outlook</option>
@@ -161,7 +161,7 @@ export default function ProfilePage() {
                       type="email"
                       value={newAccount.email}
                       onChange={(e) => setNewAccount({ ...newAccount, email: e.target.value })}
-                      className="w-full px-4 py-2.5 text-sm font-mono border border-white/[0.10] bg-white/[0.03] text-white/88 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent backdrop-blur transition-all"
+                      className="w-full px-4 py-2.5 text-sm font-mono border border-white/[0.10] bg-white/[0.03] text-white/88 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500/50 focus:border-transparent backdrop-blur transition-all"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -174,12 +174,12 @@ export default function ProfilePage() {
                       type="password"
                       value={newAccount.password}
                       onChange={(e) => setNewAccount({ ...newAccount, password: e.target.value })}
-                      className="w-full px-4 py-2.5 text-sm font-mono border border-white/[0.10] bg-white/[0.03] text-white/88 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent backdrop-blur transition-all"
+                      className="w-full px-4 py-2.5 text-sm font-mono border border-white/[0.10] bg-white/[0.03] text-white/88 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500/50 focus:border-transparent backdrop-blur transition-all"
                       placeholder="••••••••"
                     />
                   </div>
 
-                  <div className="p-3 bg-cyan-500/[0.08] backdrop-blur rounded-xl border border-cyan-500/[0.20] text-xs text-cyan-300/90 font-mono">
+                  <div className="p-3 bg-pink-500/[0.08] backdrop-blur rounded-xl border border-pink-500/[0.20] text-xs text-pink-300/90 font-mono">
                     <div className="text-white/80 mb-1">security</div>
                     <div className="text-white/60">credentials encrypted and stored securely</div>
                   </div>
@@ -188,7 +188,7 @@ export default function ProfilePage() {
                 <div className="flex gap-3 mt-6">
                   <button
                     onClick={handleAddAccount}
-                    className="flex-1 py-2.5 text-xs font-mono border border-cyan-500/[0.20] bg-cyan-500/[0.10] text-white/85 rounded-xl hover:border-cyan-500/[0.30] hover:bg-cyan-500/[0.15] transition-all"
+                    className="flex-1 py-2.5 text-xs font-mono border border-pink-500/[0.20] bg-pink-500/[0.10] text-white/85 rounded-xl hover:border-pink-500/[0.30] hover:bg-pink-500/[0.15] transition-all"
                   >
                     connect
                   </button>
@@ -207,3 +207,4 @@ export default function ProfilePage() {
     </div>
   );
 }
+

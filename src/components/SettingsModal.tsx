@@ -56,7 +56,7 @@ export default function SettingsModal({
         {/* Header */}
         <div className="px-6 py-4 border-b border-white/[0.08] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
-            <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-cyan-400 to-fuchsia-500 shadow-[0_0_18px_rgba(0,255,255,0.25)]"></div>
+            <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-pink-400 to-fuchsia-500 shadow-[0_0_18px_rgba(255,105,180,0.25)]"></div>
             <div>
               <h2 className="text-[16px] font-mono font-bold text-white/90">settings</h2>
               <p className="text-[11px] font-mono text-white/50">configure stella-mail</p>
@@ -106,7 +106,7 @@ export default function SettingsModal({
                     onAddAccount();
                     onClose();
                   }}
-                  className="w-full px-4 py-3 bg-cyan-500/[0.15] border border-cyan-500/[0.22] rounded-xl text-[13px] font-mono text-cyan-400 hover:bg-cyan-500/[0.22] transition-all flex items-center justify-center gap-2"
+                  className="w-full px-4 py-3 bg-pink-500/[0.15] border border-pink-500/[0.22] rounded-xl text-[13px] font-mono text-pink-400 hover:bg-pink-500/[0.22] transition-all flex items-center justify-center gap-2"
                 >
                   <span className="text-[16px]">+</span>
                   <span>Add New Email Account</span>
@@ -128,7 +128,7 @@ export default function SettingsModal({
                         </div>
                         <div className="flex items-center gap-2">
                           {account.isPinned && (
-                            <span className="px-2 py-0.5 rounded-md bg-cyan-500/[0.15] text-cyan-400 text-[10px] font-mono border border-cyan-500/[0.22]">pinned</span>
+                            <span className="px-2 py-0.5 rounded-md bg-pink-500/[0.15] text-pink-400 text-[10px] font-mono border border-pink-500/[0.22]">pinned</span>
                           )}
                           {account.isInFavorites && (
                             <span className="px-2 py-0.5 rounded-md bg-yellow-500/[0.15] text-yellow-400 text-[10px] font-mono border border-yellow-500/[0.22]">fav</span>
@@ -153,19 +153,19 @@ export default function SettingsModal({
                     <label className="text-[12px] font-mono text-white/70 mb-3 block">Background Theme</label>
                     <div className="grid grid-cols-3 gap-3">
                       {([
-                        { id: 'aurora', name: 'Aurora', colors: 'from-cyan-500/20 via-fuchsia-500/20 to-emerald-500/20' },
+                        { id: 'aurora', name: 'Aurora', colors: 'from-pink-500/20 via-fuchsia-500/20 to-emerald-500/20' },
                         { id: 'sunset', name: 'Sunset', colors: 'from-orange-500/20 via-pink-500/20 to-yellow-500/20' },
-                        { id: 'ocean', name: 'Ocean', colors: 'from-blue-500/20 via-teal-500/20 to-cyan-500/20' },
+                        { id: 'ocean', name: 'Ocean', colors: 'from-blue-500/20 via-teal-500/20 to-pink-500/20' },
                         { id: 'forest', name: 'Forest', colors: 'from-green-500/20 via-emerald-500/20 to-lime-500/20' },
                         { id: 'midnight', name: 'Midnight', colors: 'from-indigo-500/20 via-purple-500/20 to-violet-500/20' },
-                        { id: 'neon', name: 'Neon', colors: 'from-pink-500/20 via-cyan-500/20 to-lime-500/20' },
+                        { id: 'neon', name: 'Neon', colors: 'from-pink-500/20 via-pink-500/20 to-lime-500/20' },
                       ] as const).map((theme) => (
                         <button
                           key={theme.id}
                           onClick={() => onBackgroundThemeChange(theme.id)}
                           className={`p-3 rounded-xl border transition-all ${
                             backgroundTheme === theme.id
-                              ? 'border-white/[0.22] ring-2 ring-cyan-500/30'
+                              ? 'border-white/[0.22] ring-2 ring-pink-500/30'
                               : 'border-white/[0.06] hover:border-white/[0.10]'
                           }`}
                         >
@@ -203,7 +203,7 @@ export default function SettingsModal({
                     <button
                       onClick={() => onShowAvatarsChange(!showAvatars)}
                       className={`w-11 h-6 rounded-full transition-all flex-shrink-0 ${
-                        showAvatars ? 'bg-cyan-500/[0.30]' : 'bg-white/[0.10]'
+                        showAvatars ? 'bg-pink-500/[0.30]' : 'bg-white/[0.10]'
                       }`}
                     >
                       <div
@@ -286,7 +286,7 @@ export default function SettingsModal({
                     <button
                       onClick={() => onDesktopNotificationsChange(!desktopNotifications)}
                       className={`w-11 h-6 rounded-full transition-all flex-shrink-0 ${
-                        desktopNotifications ? 'bg-cyan-500/[0.30]' : 'bg-white/[0.10]'
+                        desktopNotifications ? 'bg-pink-500/[0.30]' : 'bg-white/[0.10]'
                       }`}
                     >
                       <div
@@ -305,7 +305,7 @@ export default function SettingsModal({
                     <button
                       onClick={() => onEnableSoundsChange(!enableSounds)}
                       className={`w-11 h-6 rounded-full transition-all flex-shrink-0 ${
-                        enableSounds ? 'bg-cyan-500/[0.30]' : 'bg-white/[0.10]'
+                        enableSounds ? 'bg-pink-500/[0.30]' : 'bg-white/[0.10]'
                       }`}
                     >
                       <div
@@ -324,7 +324,7 @@ export default function SettingsModal({
                     <button
                       onClick={() => onBadgeCountChange(!badgeCount)}
                       className={`w-11 h-6 rounded-full transition-all flex-shrink-0 ${
-                        badgeCount ? 'bg-cyan-500/[0.30]' : 'bg-white/[0.10]'
+                        badgeCount ? 'bg-pink-500/[0.30]' : 'bg-white/[0.10]'
                       }`}
                     >
                       <div
@@ -347,7 +347,7 @@ export default function SettingsModal({
 
                 <div className="space-y-4">
                   <div className="p-4 bg-white/[0.02] border border-white/[0.06] rounded-xl text-center">
-                    <div className="w-16 h-16 mx-auto mb-3 rounded-2xl bg-gradient-to-br from-cyan-400 to-fuchsia-500 shadow-[0_0_40px_rgba(0,255,255,0.2)] flex items-center justify-center">
+                    <div className="w-16 h-16 mx-auto mb-3 rounded-2xl bg-gradient-to-br from-pink-400 to-fuchsia-500 shadow-[0_0_40px_rgba(255,105,180,0.2)] flex items-center justify-center">
                       <div className="w-2.5 h-2.5 rounded-full bg-white"></div>
                     </div>
                     <div className="text-[14px] font-mono font-bold text-white/90 mb-1">Stella Mail</div>
@@ -359,19 +359,19 @@ export default function SettingsModal({
                     <div className="text-[11px] font-mono text-white/70 leading-relaxed space-y-2">
                       <div className="flex justify-between">
                         <span className="text-white/50">Two-tier account system</span>
-                        <span className="text-cyan-400">✓</span>
+                        <span className="text-pink-400">✓</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-white/50">Keyboard-first workflow</span>
-                        <span className="text-cyan-400">✓</span>
+                        <span className="text-pink-400">✓</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-white/50">Dark Stella aesthetic</span>
-                        <span className="text-cyan-400">✓</span>
+                        <span className="text-pink-400">✓</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-white/50">Inbox zero optimized</span>
-                        <span className="text-cyan-400">✓</span>
+                        <span className="text-pink-400">✓</span>
                       </div>
                     </div>
                   </div>
@@ -381,7 +381,7 @@ export default function SettingsModal({
                       href="https://github.com/sgauth0/email-code"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[11px] font-mono text-cyan-400 hover:text-cyan-300 transition-colors"
+                      className="text-[11px] font-mono text-pink-400 hover:text-pink-300 transition-colors"
                     >
                       github.com/sgauth0/email-code
                     </a>
@@ -395,3 +395,4 @@ export default function SettingsModal({
     </div>
   );
 }
+

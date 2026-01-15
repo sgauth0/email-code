@@ -27,7 +27,7 @@ export default function Header({ onSearch, onShowHelp }: HeaderProps) {
           >
             ❓
           </button>
-          <Link href="/settings" className="w-10 h-10 bg-gradient-to-r from-blue-400 to-cyan-400 text-white rounded-xl hover:from-blue-500 hover:to-cyan-500 transition-all transform hover:scale-110 shadow-md flex items-center justify-center">
+          <Link href="/settings" className="w-10 h-10 bg-gradient-to-r from-blue-400 to-pink-400 text-white rounded-xl hover:from-blue-500 hover:to-pink-500 transition-all transform hover:scale-110 shadow-md flex items-center justify-center">
             ⚙️
           </Link>
           <Link href="/profile" className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-xl flex items-center justify-center text-white font-bold shadow-md hover:scale-110 transition-all transform">
@@ -38,3 +38,4 @@ export default function Header({ onSearch, onShowHelp }: HeaderProps) {
     </header>
   );
 }
+

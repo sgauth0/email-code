@@ -53,7 +53,7 @@ export default function ThreadListView({
   const getColorForSender = (name: string) => {
     const colors = [
       'from-purple-400 to-pink-400',
-      'from-blue-400 to-cyan-400',
+      'from-blue-400 to-pink-400',
       'from-green-400 to-emerald-400',
       'from-yellow-400 to-orange-400',
       'from-red-400 to-pink-400',
@@ -65,14 +65,14 @@ export default function ThreadListView({
 
   return (
     <div className={`bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] rounded-[20px] shadow-[0_12px_40px_rgba(0,0,0,0.45)] overflow-hidden flex flex-col transition-all ${
-      isFocused ? 'ring-2 ring-cyan-500/40' : ''
+      isFocused ? 'ring-2 ring-pink-500/40' : ''
     }`}>
       <div className="px-3 py-3 border-b border-white/[0.07] bg-black/[0.15]">
         <div className="relative">
           <input
             type="search"
             placeholder="search..."
-            className="w-full px-3 py-2 bg-white/[0.04] border border-white/[0.08] rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500/40 focus:border-transparent text-[13px] font-mono text-white/85 placeholder-white/40 transition-all"
+            className="w-full px-3 py-2 bg-white/[0.04] border border-white/[0.08] rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500/40 focus:border-transparent text-[13px] font-mono text-white/85 placeholder-white/40 transition-all"
           />
         </div>
       </div>
@@ -96,11 +96,11 @@ export default function ThreadListView({
               <div
                 key={thread.id}
                 onClick={() => onThreadClick(thread)}
-                className={`${paddingClass} cursor-pointer transition-all border-b border-white/[0.04] ${
+                className={`${paddingClass} cursor-pointer transition-all ${
                   selectedThread?.id === thread.id 
-                    ? 'bg-white/[0.06] border-l-2 border-l-cyan-500' 
-                    : 'hover:bg-white/[0.03]'
-                } ${!thread.isRead ? 'border-l-2 border-l-fuchsia-500' : ''}`}
+                    ? 'border-2 border-pink-500 rounded-xl mb-1' 
+                    : 'border-b border-white/[0.04] hover:bg-white/[0.03]'
+                } ${!thread.isRead && selectedThread?.id !== thread.id ? 'border-l-2 border-l-fuchsia-500' : ''}`}
               >
                 <div className={`flex ${gapSize}`}>
                   {showAvatars && (
@@ -162,3 +162,4 @@ export default function ThreadListView({
     </div>
   );
 }
+

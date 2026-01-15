@@ -83,3 +83,4 @@ export interface SyncStatus {
   lastSyncTime?: Date;
   error?: string;
 }
+

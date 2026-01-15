@@ -319,3 +319,4 @@ export function addThread(thread: Thread): void {
 export function addMessage(message: Message): void {
   messages.push(message);
 }
+
