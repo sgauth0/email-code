@@ -26,6 +26,8 @@ import Sidebar from '@/components/Sidebar';
 import Header from '@/components/Header';
 import HelpModal from '@/components/HelpModal';
 import OnboardAccountModal from '@/components/OnboardAccountModal';
+import SettingsModal from '@/components/SettingsModal';
+import ComposeModal from '@/components/ComposeModal';
 
 export default function EmailPage() {
   const [accounts, setAccounts] = useState<Account[]>([]);
@@ -43,6 +45,15 @@ export default function EmailPage() {
   const [movePickerQuery, setMovePickerQuery] = useState('');
   const [showAccountPicker, setShowAccountPicker] = useState(false);
   const [showOnboarding, setShowOnboarding] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  const [showCompose, setShowCompose] = useState(false);
+  const [composeReplyTo, setComposeReplyTo] = useState<Thread | null>(null);
+  const [backgroundTheme, setBackgroundTheme] = useState<'aurora' | 'sunset' | 'ocean' | 'forest' | 'midnight' | 'neon'>('aurora');
+  const [density, setDensity] = useState<'compact' | 'comfortable' | 'spacious'>('comfortable');
+  const [showAvatars, setShowAvatars] = useState(true);
+  const [enableSounds, setEnableSounds] = useState(false);
+  const [desktopNotifications, setDesktopNotifications] = useState(false);
+  const [badgeCount, setBadgeCount] = useState(true);
 
   // Initialize data
   useEffect(() => {
@@ -111,6 +122,16 @@ export default function EmailPage() {
   // Keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      // If compose modal is open, block all shortcuts except Escape
+      if (showCompose) {
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          setShowCompose(false);
+          setComposeReplyTo(null);
+        }
+        return;
+      }
+
       // Don't trigger if typing in input (except for move picker)
       if ((e.target as HTMLElement).tagName === 'INPUT' && !showMovePicker) return;
       
@@ -354,7 +375,17 @@ export default function EmailPage() {
       }
 
       // Global shortcuts
-      if (e.key === '?') {
+      if (e.key === 'c' && !e.ctrlKey && !e.metaKey) {
+        // Compose new email
+        e.preventDefault();
+        setComposeReplyTo(null);
+        setShowCompose(true);
+      } else if (e.key === 'r' && selectedThread) {
+        // Reply to selected thread
+        e.preventDefault();
+        setComposeReplyTo(selectedThread);
+        setShowCompose(true);
+      } else if (e.key === '?') {
         e.preventDefault();
         setShowHelp(true);
       } else if (e.key === 'Escape') {
@@ -372,7 +403,7 @@ export default function EmailPage() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedThread, threads, showHelp, focusMode, selectedAccount, selectedFolder, viewMode, accounts, showMovePicker, pinnedAccounts, showAccountPicker]);
+  }, [selectedThread, threads, showHelp, focusMode, selectedAccount, selectedFolder, viewMode, accounts, showMovePicker, pinnedAccounts, showAccountPicker, showCompose]);
 
   const handleThreadClick = (thread: Thread) => {
     setSelectedThread(thread);
@@ -452,11 +483,50 @@ export default function EmailPage() {
 
   return (
     <div className="h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 overflow-hidden">
-      {/* Radial gradient overlays */}
+      {/* Radial gradient overlays - theme based */}
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-[20%] left-[12%] w-[1200px] h-[700px] bg-cyan-500/[0.07] rounded-full blur-3xl"></div>
-        <div className="absolute top-[10%] right-[12%] w-[1000px] h-[600px] bg-fuchsia-500/[0.06] rounded-full blur-3xl"></div>
-        <div className="absolute bottom-[10%] left-[70%] w-[900px] h-[600px] bg-emerald-500/[0.05] rounded-full blur-3xl"></div>
+        {backgroundTheme === 'aurora' && (
+          <>
+            <div className="absolute top-[20%] left-[12%] w-[1200px] h-[700px] bg-cyan-500/[0.07] rounded-full blur-3xl"></div>
+            <div className="absolute top-[10%] right-[12%] w-[1000px] h-[600px] bg-fuchsia-500/[0.06] rounded-full blur-3xl"></div>
+            <div className="absolute bottom-[10%] left-[70%] w-[900px] h-[600px] bg-emerald-500/[0.05] rounded-full blur-3xl"></div>
+          </>
+        )}
+        {backgroundTheme === 'sunset' && (
+          <>
+            <div className="absolute top-[15%] left-[10%] w-[1200px] h-[700px] bg-orange-500/[0.08] rounded-full blur-3xl"></div>
+            <div className="absolute top-[20%] right-[15%] w-[1000px] h-[600px] bg-pink-500/[0.07] rounded-full blur-3xl"></div>
+            <div className="absolute bottom-[15%] left-[60%] w-[900px] h-[600px] bg-yellow-500/[0.06] rounded-full blur-3xl"></div>
+          </>
+        )}
+        {backgroundTheme === 'ocean' && (
+          <>
+            <div className="absolute top-[20%] left-[15%] w-[1200px] h-[700px] bg-blue-500/[0.08] rounded-full blur-3xl"></div>
+            <div className="absolute top-[10%] right-[10%] w-[1000px] h-[600px] bg-teal-500/[0.07] rounded-full blur-3xl"></div>
+            <div className="absolute bottom-[10%] left-[65%] w-[900px] h-[600px] bg-cyan-500/[0.06] rounded-full blur-3xl"></div>
+          </>
+        )}
+        {backgroundTheme === 'forest' && (
+          <>
+            <div className="absolute top-[18%] left-[12%] w-[1200px] h-[700px] bg-green-500/[0.07] rounded-full blur-3xl"></div>
+            <div className="absolute top-[12%] right-[12%] w-[1000px] h-[600px] bg-emerald-500/[0.07] rounded-full blur-3xl"></div>
+            <div className="absolute bottom-[12%] left-[68%] w-[900px] h-[600px] bg-lime-500/[0.05] rounded-full blur-3xl"></div>
+          </>
+        )}
+        {backgroundTheme === 'midnight' && (
+          <>
+            <div className="absolute top-[20%] left-[12%] w-[1200px] h-[700px] bg-indigo-500/[0.06] rounded-full blur-3xl"></div>
+            <div className="absolute top-[10%] right-[12%] w-[1000px] h-[600px] bg-purple-500/[0.06] rounded-full blur-3xl"></div>
+            <div className="absolute bottom-[10%] left-[70%] w-[900px] h-[600px] bg-violet-500/[0.05] rounded-full blur-3xl"></div>
+          </>
+        )}
+        {backgroundTheme === 'neon' && (
+          <>
+            <div className="absolute top-[20%] left-[12%] w-[1200px] h-[700px] bg-pink-500/[0.09] rounded-full blur-3xl"></div>
+            <div className="absolute top-[10%] right-[12%] w-[1000px] h-[600px] bg-cyan-500/[0.08] rounded-full blur-3xl"></div>
+            <div className="absolute bottom-[10%] left-[70%] w-[900px] h-[600px] bg-lime-500/[0.07] rounded-full blur-3xl"></div>
+          </>
+        )}
       </div>
 
       <div className="relative grid grid-rows-[56px_1fr] gap-3 p-3.5 h-full">
@@ -527,7 +597,18 @@ export default function EmailPage() {
             </button>
 
             <button
-              onClick={() => window.location.href = '/settings'}
+              onClick={() => {
+                setComposeReplyTo(null);
+                setShowCompose(true);
+              }}
+              className="px-3 py-1.5 rounded-full border border-cyan-500/[0.30] bg-cyan-500/[0.15] text-[12px] font-mono text-cyan-400 hover:bg-cyan-500/[0.22] transition-all"
+              title="Compose (c)"
+            >
+              ✏️ compose
+            </button>
+
+            <button
+              onClick={() => setShowSettings(true)}
               className="px-2.5 py-1.5 rounded-full border border-dashed border-white/[0.10] bg-white/[0.04] text-[12px] font-mono text-white/70 hover:border-white/[0.16] transition-all"
               title="Settings"
             >
@@ -568,6 +649,8 @@ export default function EmailPage() {
             viewMode={viewMode}
             searchQuery={searchQuery}
             isFocused={focusMode === 'threads'}
+            density={density}
+            showAvatars={showAvatars}
           />
 
           <ThreadDetailView
@@ -712,6 +795,45 @@ export default function EmailPage() {
         <OnboardAccountModal
           onClose={() => setShowOnboarding(false)}
           onComplete={handleAddAccount}
+        />
+      )}
+
+      {showCompose && (
+        <ComposeModal
+          onClose={() => {
+            setShowCompose(false);
+            setComposeReplyTo(null);
+          }}
+          onSend={(data) => {
+            console.log('Sending email:', data);
+            // In a real app, this would call the backend API
+            setShowCompose(false);
+            setComposeReplyTo(null);
+            // Show success notification
+          }}
+          accounts={accounts}
+          replyTo={composeReplyTo || undefined}
+          defaultAccount={selectedAccount || undefined}
+        />
+      )}
+
+      {showSettings && (
+        <SettingsModal
+          onClose={() => setShowSettings(false)}
+          accounts={accounts}
+          onAddAccount={() => setShowOnboarding(true)}
+          backgroundTheme={backgroundTheme}
+          onBackgroundThemeChange={setBackgroundTheme}
+          density={density}
+          onDensityChange={setDensity}
+          showAvatars={showAvatars}
+          onShowAvatarsChange={setShowAvatars}
+          enableSounds={enableSounds}
+          onEnableSoundsChange={setEnableSounds}
+          desktopNotifications={desktopNotifications}
+          onDesktopNotificationsChange={setDesktopNotifications}
+          badgeCount={badgeCount}
+          onBadgeCountChange={setBadgeCount}
         />
       )}
 

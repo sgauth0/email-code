@@ -9,6 +9,8 @@ interface ThreadListViewProps {
   viewMode: 'unified' | 'account';
   searchQuery: string;
   isFocused: boolean;
+  density: 'compact' | 'comfortable' | 'spacious';
+  showAvatars: boolean;
 }
 
 export default function ThreadListView({
@@ -18,6 +20,8 @@ export default function ThreadListView({
   viewMode,
   searchQuery,
   isFocused,
+  density,
+  showAvatars,
 }: ThreadListViewProps) {
   const filteredThreads = searchQuery
     ? threads.filter(
@@ -83,28 +87,35 @@ export default function ThreadListView({
               .join('')
               .toUpperCase();
 
+            const paddingClass = density === 'compact' ? 'p-2' : density === 'spacious' ? 'p-4' : 'p-3';
+            const avatarSize = density === 'compact' ? 'w-8 h-8' : density === 'spacious' ? 'w-10 h-10' : 'w-9 h-9';
+            const textSize = density === 'compact' ? 'text-[12px]' : density === 'spacious' ? 'text-[14px]' : 'text-[13px]';
+            const gapSize = density === 'compact' ? 'gap-2' : density === 'spacious' ? 'gap-4' : 'gap-3';
+
             return (
               <div
                 key={thread.id}
                 onClick={() => onThreadClick(thread)}
-                className={`p-3 cursor-pointer transition-all border-b border-white/[0.04] ${
+                className={`${paddingClass} cursor-pointer transition-all border-b border-white/[0.04] ${
                   selectedThread?.id === thread.id 
                     ? 'bg-white/[0.06] border-l-2 border-l-cyan-500' 
                     : 'hover:bg-white/[0.03]'
                 } ${!thread.isRead ? 'border-l-2 border-l-fuchsia-500' : ''}`}
               >
-                <div className="flex gap-3">
-                  <div
-                    className={`w-9 h-9 rounded-xl bg-gradient-to-br ${getColorForSender(
-                      sender.name
-                    )} flex items-center justify-center text-white font-mono font-bold text-[11px] shadow-md flex-shrink-0`}
-                  >
-                    {initials}
-                  </div>
+                <div className={`flex ${gapSize}`}>
+                  {showAvatars && (
+                    <div
+                      className={`${avatarSize} rounded-xl bg-gradient-to-br ${getColorForSender(
+                        sender.name
+                      )} flex items-center justify-center text-white font-mono font-bold text-[11px] shadow-md flex-shrink-0`}
+                    >
+                      {initials}
+                    </div>
+                  )}
                   <div className="flex-1 min-w-0">
                     <div className="flex justify-between items-start mb-1">
                       <span
-                        className={`truncate text-[13px] font-mono ${
+                        className={`truncate ${textSize} font-mono ${
                           !thread.isRead
                             ? 'font-bold text-white/90'
                             : 'text-white/75'
@@ -112,18 +123,18 @@ export default function ThreadListView({
                       >
                         {sender.name}
                       </span>
-                      <span className="text-[11px] font-mono text-white/50 ml-2 flex-shrink-0">
+                      <span className={`${density === 'compact' ? 'text-[10px]' : 'text-[11px]'} font-mono text-white/50 ml-2 flex-shrink-0`}>
                         {formatDate(thread.lastActivity)}
                       </span>
                     </div>
                     <div
-                      className={`text-[13px] font-mono mb-1 truncate ${
+                      className={`${textSize} font-mono mb-1 truncate ${
                         !thread.isRead ? 'font-bold text-white/85' : 'text-white/70'
                       }`}
                     >
                       {thread.subject}
                     </div>
-                    <div className="text-[12px] font-mono text-white/50 truncate">{thread.snippet}</div>
+                    <div className={`${density === 'compact' ? 'text-[11px]' : 'text-[12px]'} font-mono text-white/50 truncate`}>{thread.snippet}</div>
                     <div className="flex gap-2 mt-2">
                       {thread.isStarred && <span className="text-[12px]">⭐</span>}
                       {thread.labels.map((label) => (
