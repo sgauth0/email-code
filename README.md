@@ -1,88 +1,33 @@
-# Draggable Terminal with Next.js
+# EmailCode (C#)
 
-A Next.js application featuring a draggable terminal component built with xterm.js and react-dnd.
+EmailCode is a C#/.NET email client prototype with a WPF desktop shell, shared domain models, and infrastructure stubs for storage and providers.
 
+## Projects
 
-## Plus a framework for an email client this is all just basic ass framework stuff for other things feel free to use it for whatever MIT type stuuff.
+- **EmailCode.Core**: Domain models and in-memory services.
+- **EmailCode.Infrastructure**: Provider/storage integrations (mocked/stubbed implementations).
+- **EmailCode.Desktop**: WPF desktop UI that consumes the core and infrastructure layers.
+- **EmailCode.Tests**: Unit tests covering core behaviors.
 
-## Features
+## Prerequisites
 
-- 🖥️ Full-featured terminal emulation using [xterm.js](https://xtermjs.org/)
-- 🎯 Drag-and-drop functionality with [react-dnd](https://react-dnd.github.io/react-dnd/)
-- ⚡ Built with Next.js 15 and TypeScript
-- 🎨 Modern UI with custom styling
+- .NET 8 SDK
+- Windows (required for WPF desktop app)
 
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18+ installed
-- npm or yarn package manager
-
-### Installation
-
-Install dependencies:
+## Build
 
 ```bash
-npm install
+dotnet build EmailCode.sln
 ```
 
-### Development
-
-Run the development server:
+## Run the desktop app
 
 ```bash
-npm run dev
+dotnet run --project EmailCode.Desktop/EmailCode.Desktop.csproj
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see the app.
-
-### Build
-
-Build for production:
+## Run tests
 
 ```bash
-npm run build
+dotnet test EmailCode.Tests/EmailCode.Tests.csproj
 ```
-
-Start production server:
-
-```bash
-npm start
-```
-
-## Project Structure
-
-```
-termtest/
-├── src/
-│   ├── app/
-│   │   ├── layout.tsx      # Root layout
-│   │   ├── page.tsx        # Home page with DnD provider
-│   │   └── globals.css     # Global styles
-│   └── components/
-│       └── DraggableTerminal.tsx  # Main terminal component
-├── package.json
-├── tsconfig.json
-└── next.config.ts
-```
-
-## Technologies Used
-
-- **Next.js 15** - React framework
-- **TypeScript** - Type safety
-- **xterm.js** - Terminal emulation
-- **react-dnd** - Drag and drop functionality
-- **@xterm/addon-fit** - Terminal size fitting
-
-## How It Works
-
-The terminal component:
-1. Initializes xterm.js in a React component
-2. Uses react-dnd's `useDrag` hook for drag functionality
-3. Handles user input and displays output
-4. Dynamically imported to avoid SSR issues with browser APIs
-
-## License
-
-MIT
