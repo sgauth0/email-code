@@ -284,20 +284,24 @@ public sealed class EmailStore
 
         if (filters.HasAttachment == true)
         {
-            results = results.Where(t => _messages.Where(m => m.ThreadId == t.Id).Any(m => m.Attachments.Count > 0));
+            results = results.Where(t => _messages.Any(m => m.ThreadId == t.Id && m.Attachments.Count > 0));
         }
 
         if (!string.IsNullOrWhiteSpace(filters.From))
         {
-            var fromLower = filters.From.ToLowerInvariant();
-            results = results.Where(t => t.Participants.Any(p => p.Email.ToLowerInvariant().Contains(fromLower) || p.Name.ToLowerInvariant().Contains(fromLower)));
+            var fromTerm = filters.From;
+            results = results.Where(t => t.Participants.Any(p =>
+                p.Email.Contains(fromTerm, StringComparison.OrdinalIgnoreCase)
+                || p.Name.Contains(fromTerm, StringComparison.OrdinalIgnoreCase)));
         }
 
         if (!string.IsNullOrWhiteSpace(filters.To))
         {
-            var toLower = filters.To.ToLowerInvariant();
+            var toTerm = filters.To;
             var threadIdsWithTo = _messages
-                .Where(m => m.To.Any(p => p.Email.ToLowerInvariant().Contains(toLower) || p.Name.ToLowerInvariant().Contains(toLower)))
+                .Where(m => m.To.Any(p =>
+                    p.Email.Contains(toTerm, StringComparison.OrdinalIgnoreCase)
+                    || p.Name.Contains(toTerm, StringComparison.OrdinalIgnoreCase)))
                 .Select(m => m.ThreadId)
                 .ToHashSet();
             results = results.Where(t => threadIdsWithTo.Contains(t.Id));
@@ -305,12 +309,12 @@ public sealed class EmailStore
 
         if (!string.IsNullOrWhiteSpace(filters.Query))
         {
-            var query = filters.Query.ToLowerInvariant();
+            var query = filters.Query;
             results = results.Where(t =>
             {
-                var subjectMatch = t.Subject.ToLowerInvariant().Contains(query);
-                var snippetMatch = t.Snippet.ToLowerInvariant().Contains(query);
-                var bodyMatch = _messages.Where(m => m.ThreadId == t.Id).Any(m => m.Body.ToLowerInvariant().Contains(query));
+                var subjectMatch = t.Subject.Contains(query, StringComparison.OrdinalIgnoreCase);
+                var snippetMatch = t.Snippet.Contains(query, StringComparison.OrdinalIgnoreCase);
+                var bodyMatch = _messages.Any(m => m.ThreadId == t.Id && m.Body.Contains(query, StringComparison.OrdinalIgnoreCase));
                 return subjectMatch || snippetMatch || bodyMatch;
             });
         }
